@@ -1,0 +1,13 @@
+version: "3"
+services:
+  postgres:
+    container_name: social-app
+    image: postgres:13.4
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DATABASE: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - /tmp/postgres:/tmp/postgres
