@@ -1,23 +1,23 @@
-export interface User {
-    id?: number;
-    name?: string;
-    username?: string;
-    email?: string;
-    password?: string;
-    role?: UserRole;
-    isEmailVerified?: boolean;
-    // profileImage?: string;
-    // blogEntries?: BlogEntry[];
+export interface IUser {
+  id?: number;
+  name?: string;
+  username?: string;
+  email?: string;
+  password?: string;
+  role?: UserRole;
+  isEmailVerified?: boolean;
+  // profileImage?: string;
+  // blogEntries?: BlogEntry[];
 }
 
 export enum UserRole {
-    ADMIN = 'admin',
-    CHIEFEDITOR = 'chiefeditor',    
-    EDITOR = 'editor',
-    USER = 'user'
+  ADMIN = 'admin',
+  CHIEFEDITOR = 'chiefeditor',
+  EDITOR = 'editor',
+  USER = 'user',
 }
 
-export interface UserEmailConfirmation  {
-    email: string;
-    name: string;
+export interface UserEmailConfirmation {
+  email: string;
+  name: string;
 }
