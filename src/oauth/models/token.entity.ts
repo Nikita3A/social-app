@@ -19,8 +19,8 @@ export class Token {
 
   // @ManyToOne(() => Client)
   // client: Client;
-  @PrimaryGeneratedColumn('uuid')
-  id?: string;
+  @PrimaryGeneratedColumn()
+  id: string;
 
   @Column({ type: 'text' })
   accessToken: string;

@@ -37,6 +37,11 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get(':id/chats')
+  async getUsersChats(@Param('id') id: string) {
+    return await this.usersService.getUsersChat(id);
+  }
+
   @ApiParam({
     name: 'id',
     required: true,

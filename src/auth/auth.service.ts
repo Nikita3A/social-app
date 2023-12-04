@@ -55,7 +55,7 @@ export class AuthService {
 
     const accessToken = this.jwtService.sign(
       { user: validatedUser },
-      { secret: process.env.ACCESS_TOKEN_SECRET, expiresIn: '5s' },
+      { secret: process.env.ACCESS_TOKEN_SECRET, expiresIn: '1h' },
     );
     const refreshToken = this.jwtService.sign(
       { user: validatedUser },
@@ -63,7 +63,7 @@ export class AuthService {
     );
 
     const accessTokenExpiresAt = new Date();
-    accessTokenExpiresAt.setSeconds(accessTokenExpiresAt.getSeconds() + 5); // 5 seconds from now
+    accessTokenExpiresAt.setSeconds(accessTokenExpiresAt.getHours() + 1); // 5 seconds from now
 
     const refreshTokenExpiresAt = new Date();
     refreshTokenExpiresAt.setDate(refreshTokenExpiresAt.getDate() + 7); // 7 days from now

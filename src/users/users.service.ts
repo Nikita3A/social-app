@@ -40,7 +40,15 @@ export class UsersService {
   }
 
   findOneById(id): Promise<User> {
-    return this.usersRepository.findOne(id);
+    // return this.usersRepository.findOne(id);
+    return this.usersRepository.findOneBy({ id: id });
+  }
+  async getUsersChat(id: string | number) {
+    const user = await this.usersRepository.findOneOrFail({
+      where: { id: Number(id) },
+      relations: ['chats'],
+    });
+    return user.chats;
   }
 
   async findOneByEmail(email: string): Promise<User> {
