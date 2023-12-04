@@ -38,6 +38,7 @@ export class ChatService {
     return await this.messagesRepository.find({
       where: { chat: { id: chatId } },
       order: { id: 'ASC' },
+      relations: ['user'],
     });
   }
 

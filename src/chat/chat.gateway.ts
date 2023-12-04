@@ -73,8 +73,6 @@ export class ChatGateway
     client: Socket,
     payload: { chatId: string; text: string; userId: string },
   ) {
-    console.log('sending msg: ', payload);
-
     // Save the new message to the database
     const newMessage = await this.chatService.sendMessage(
       payload.text,
@@ -84,7 +82,13 @@ export class ChatGateway
     // Emit the new message to all clients in the chat room
     // this.server.to(payload.chatId).emit('newMessage', newMessage);
     // this.server.emit('newMessage', newMessage);
-    this.server.to(payload.chatId).emit('newMessage', newMessage);
+
+    // newMessage.user = { ...newMessage.user, id: Number(payload.userId) };
+    console.log('new: ', newMessage);
+    const messages = await this.chatService.getMessages(payload.chatId); // Fetch messages from the database
+    this.server.to(payload.chatId).emit('chatToClient', messages);
+
+    // this.server.to(payload.chatId).emit('newMessage', newMessage);
   }
 
   @SubscribeMessage('chatToServer')
